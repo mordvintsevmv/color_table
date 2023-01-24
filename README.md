@@ -28,7 +28,6 @@
 
 ## <a name="todo">ToDo</a>
 
-- [ ] Develop icons
 - [ ] Develop OG 
 - [ ] Develop Color Table
 - [ ] Develop Modal Component for item
