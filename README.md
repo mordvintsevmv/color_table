@@ -28,7 +28,6 @@
 
 ## <a name="todo">ToDo</a>
 
-- [ ] Develop OG 
 - [ ] Develop Color Table
 - [ ] Develop Modal Component for item
 - [ ] Use Pagination
