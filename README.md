@@ -1,5 +1,11 @@
 # Color Table
 
+Website with a table of colors of the year according to Pantone.
+
+**Currently developed:**
+- [X] Redux Store
+- [X] Dark/Light Mode Feature
+
 <a href="https://mordvintsevmv.github.io/color_table" target="_blank">Test App</a>
 
 ---
