@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect} from 'react';
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {CssBaseline, FormControlLabel, FormGroup, Typography,} from "@mui/material";
 import {darkTheme, lightTheme} from './mui/themes'
@@ -9,11 +9,21 @@ import {useActions} from "./hooks/useActions";
 const App: FC = () => {
 
     const theme = useTypedSelector(state => state.themeReducer)
-    const {setTheme} = useActions()
+    const state = useTypedSelector(state => state)
+
+    const {setTheme, fetchColors} = useActions()
 
     const ChangeThemeHandler = () => {
         theme === 'dark' ? setTheme('light') : setTheme('dark')
     }
+
+    const buttonHandler = () => {
+        console.log(state)
+    }
+
+    useEffect(()=>{
+        fetchColors(1)
+    },[])
 
     return (
         <ThemeProvider theme={theme === 'dark' ? createTheme(darkTheme) : createTheme(lightTheme)}>
@@ -34,6 +44,8 @@ const App: FC = () => {
                 <Typography variant="h3" component="h3">
                     Color Table
                 </Typography>
+
+                <button onClick={buttonHandler}>CLICK</button>
 
             </div>
         </ThemeProvider>
