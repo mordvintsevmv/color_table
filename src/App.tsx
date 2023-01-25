@@ -1,19 +1,22 @@
-import React, {FC, useState} from 'react';
+import React, {FC} from 'react';
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {CssBaseline, FormControlLabel, FormGroup, Typography,} from "@mui/material";
 import {darkTheme, lightTheme} from './mui/themes'
 import {DarkLightSwitch} from './mui/buttons'
+import {useTypedSelector} from "./hooks/typedHooks";
+import {useActions} from "./hooks/useActions";
 
 const App: FC = () => {
 
-    const [isDarkMode, setIsDarkMode] = useState(true)
+    const theme = useTypedSelector(state => state.themeReducer)
+    const {setTheme} = useActions()
 
     const ChangeThemeHandler = () => {
-        setIsDarkMode(!isDarkMode)
+        theme === 'dark' ? setTheme('light') : setTheme('dark')
     }
 
     return (
-        <ThemeProvider theme={isDarkMode ? createTheme(darkTheme) : createTheme(lightTheme)}>
+        <ThemeProvider theme={theme === 'dark' ? createTheme(darkTheme) : createTheme(lightTheme)}>
             <CssBaseline/>
 
             <div className="App">
@@ -21,7 +24,7 @@ const App: FC = () => {
                 <FormGroup>
 
                     <FormControlLabel
-                        control={<DarkLightSwitch sx={{m: 1}} checked={isDarkMode} onChange={ChangeThemeHandler}/>}
+                        control={<DarkLightSwitch sx={{m: 1}} checked={theme === 'dark'} onChange={ChangeThemeHandler}/>}
                         label=""
                     />
 
