@@ -15,6 +15,7 @@ Website with a table of colors of the year according to Pantone.
 0. [Task](#task)
    - [Task Description](#task-description)
    - [Task Requirements](#task-requirements)
+   - [Task API](#task-api)
 0. [Technologies](#technologies)
 1. [ToDo](#todo)
 2. [Contacts](#contacts)
@@ -56,6 +57,10 @@ Please reflect pagination and filtering in the address URL, so users can copy an
 - Unit tests
 - Redux/Context API or other state management library
 
+### <a name="task-api">Task API</a>
+
+https://reqres.in/api/products
+
 ---
 
 ## <a name="technologies">Technologies</a>
@@ -78,7 +83,6 @@ Please reflect pagination and filtering in the address URL, so users can copy an
 - [ ] Develop Color Table
 - [ ] Develop Modal Component for item
 - [ ] Use Pagination
-- [ ] Develop Redux Store
 - [ ] Develop ID search
 - [ ] Develop Error check
 - [ ] Develop Tests
