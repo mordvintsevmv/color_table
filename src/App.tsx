@@ -5,6 +5,7 @@ import {darkTheme, lightTheme} from './mui/themes'
 import {useTypedSelector} from "./hooks/typedHooks";
 import {useActions} from "./hooks/useActions";
 import Header from "./components/Header/Header";
+import ColorTable from "./components/ColorTable/ColorTable";
 const App: FC = () => {
 
     const theme = useTypedSelector(state => state.themeReducer)
@@ -27,6 +28,8 @@ const App: FC = () => {
             <div className="App">
 
                 <Header/>
+
+                <ColorTable/>
 
                 <button onClick={buttonHandler}>CLICK</button>
 
