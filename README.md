@@ -32,7 +32,6 @@
 - [ ] Develop Modal Component for item
 - [ ] Use Pagination
 - [ ] Develop Redux Store
-- [ ] Develop Theme changing
 - [ ] Develop ID search
 - [ ] Develop Error check
 - [ ] Develop Tests
