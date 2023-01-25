@@ -6,6 +6,9 @@
 
 ## <a name="content">Content</a>
 
+0. [Task](#task)
+   - [Task Description](#task-description)
+   - [Task Requirements](#task-requirements)
 0. [Technologies](#technologies)
 1. [ToDo](#todo)
 2. [Contacts](#contacts)
@@ -14,7 +17,7 @@
 
 ## <a name="task">Task</a>
 
-### <a name="task-description">Description</a>
+### <a name="task-description">Task Description</a>
 
 The goal of the task is to implement SPA application with just one view. 
 You should use the below API endpoint to display the paginated list of products. 
@@ -38,7 +41,7 @@ Your app should start after running npm install & npm start.
 
 Please reflect pagination and filtering in the address URL, so users can copy and share the URL with each other.
 
-### <a name="task-requirements">Requirements</a>
+### <a name="task-requirements">Task Requirements</a>
 
 - React 
 - Typescript 
