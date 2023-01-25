@@ -61,11 +61,12 @@ Please reflect pagination and filtering in the address URL, so users can copy an
 ## <a name="technologies">Technologies</a>
 
 <div style="display:flex; justify-content: space-around; align-items: center; gap: 40px">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/1024px-HTML5_logo_and_wordmark.svg.png?20170517184425" width="40" alt="html"/>
-<img src="https://1000logos.net/wp-content/uploads/2020/08/Sass-Logo-1024x640.png" width="40" alt="scss"/>
-<img src="https://www.svgrepo.com/show/303600/typescript-logo.svg" width="40" alt="typescript"/>
-<img src="https://www.vectorlogo.zone/logos/reactjs/reactjs-icon.svg" width="40" alt="react"/>
-<img src="https://cdn.icon-icons.com/icons2/2415/PNG/512/redux_original_logo_icon_146365.png" width="40" alt="redux"/>
+<img src="https://github.com/devicons/devicon/blob/master/icons/html5/html5-plain-wordmark.svg" width="40" alt="html"/>
+<img src="https://github.com/devicons/devicon/blob/master/icons/sass/sass-original.svg" width="40" alt="scss"/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg" width="40" alt="typescript"/>
+<img src="https://github.com/devicons/devicon/blob/master/icons/react/react-original-wordmark.svg" width="40" alt="react"/>
+<img src="https://github.com/devicons/devicon/blob/master/icons/redux/redux-original.svg" width="40" alt="redux"/>
+<img src="https://github.com/devicons/devicon/blob/master/icons/materialui/materialui-original.svg" width="40" alt="mui"/>
 </div>
 
 [🔝Content🔝](#content)
