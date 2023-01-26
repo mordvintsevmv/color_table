@@ -10,13 +10,22 @@ interface IColor {
 interface ColorState {
     colors: IColor[],
     loading: boolean,
-    error: null | string
+    error: null | string,
+    page: number,
+    per_page: number,
+    total_colors: number,
+    total_pages: number
 }
 
 const initialState: ColorState = {
     colors: [],
     loading: false,
-    error: null
+    error: null,
+    page: 1,
+    per_page: 5,
+    total_colors: 0,
+    total_pages: 1,
+
 }
 
 export const colorSlice = createSlice({
@@ -36,7 +45,24 @@ export const colorSlice = createSlice({
         colorsError: (state, action) => {
             state.error = action.payload;
             state.loading = false;
+        },
+
+        setPage: (state, action) => {
+            state.page = action.payload
+        },
+
+        setPerPage: (state, action) => {
+            state.per_page = action.payload
+        },
+
+        setTotalColors: (state, action) => {
+            state.total_colors = action.payload
+        },
+
+        setTotalPages: (state, action) => {
+            state.total_pages = action.payload
         }
+
     }
 })
 
