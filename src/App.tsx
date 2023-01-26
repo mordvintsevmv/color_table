@@ -7,11 +7,12 @@ import Header from "./components/Header/Header";
 import ColorTable from "./components/ColorTable/ColorTable";
 import {ArrowBackIosNew, ArrowForwardIos} from "@mui/icons-material";
 import {useActions} from "./hooks/useActions";
+import SearchField from "./components/SearchField/SearchField";
 
 const App: FC = () => {
 
     const theme = useTypedSelector(state => state.themeReducer)
-    const {page, total_pages} = useTypedSelector(state => state.colorReducer)
+    const {page, total_pages, total_colors , per_page} = useTypedSelector(state => state.colorReducer)
     const {setCurrentPage} = useActions()
 
     const prevPageHandler = () => {
@@ -20,7 +21,6 @@ const App: FC = () => {
 
     const nextPageHandler = () => {
         setCurrentPage(page + 1)
-
     }
 
     return (
@@ -31,18 +31,21 @@ const App: FC = () => {
 
                 <Header/>
 
+                <SearchField/>
+
                 <ColorTable/>
 
                 <Stack
                     direction="row"
                     justifyContent="center"
                     alignItems="center"
-                    spacing={8}
+                    spacing={10}
+                    mt={3}
 
                 >
                     <Button
                         startIcon={<ArrowBackIosNew/>}
-                        disabled={page === 1}
+                        disabled={page === 1 || total_colors <= per_page}
                         onClick={prevPageHandler}
                     >
                         Prev
@@ -50,7 +53,7 @@ const App: FC = () => {
 
                     <Button
                         endIcon={<ArrowForwardIos/>}
-                        disabled={page === total_pages}
+                        disabled={page === total_pages || total_colors <= per_page}
                         onClick={nextPageHandler}
                     >
                         Next
