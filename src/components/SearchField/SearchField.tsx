@@ -1,4 +1,3 @@
-import './SearchField.scss'
 import {ChangeEvent, FC, useState} from "react";
 import {useTypedSelector} from "../../hooks/typedHooks";
 import {useActions} from "../../hooks/useActions";
