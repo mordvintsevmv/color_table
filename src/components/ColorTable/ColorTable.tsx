@@ -25,6 +25,8 @@ const ColorTable: FC = () => {
 
     const {fetchColors} = useActions()
     const {colors} = useTypedSelector(state => state.colorReducer)
+    const {page} = useTypedSelector(state => state.colorReducer)
+
 
     const [columnDefs, setColumnDefs] = useState([
         {field: 'id', width: 30},
@@ -43,8 +45,8 @@ const ColorTable: FC = () => {
     }
 
     useEffect(()=>{
-        fetchColors(1)
-    },[])
+        fetchColors(page)
+    },[page])
 
     return(
         <div className={"color-table"}>
