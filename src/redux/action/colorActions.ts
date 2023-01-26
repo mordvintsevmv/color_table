@@ -22,3 +22,19 @@ export const fetchColors = (page: number, per_page:number = 5) => async (dispatc
 export const setCurrentPage = (page: number) => (dispatch: Dispatch) => {
     dispatch(setPage(page))
 }
+
+export const findColorById = (id: number) => async (dispatch: Dispatch) => {
+    try{
+        await axios.get(`https://reqres.in/api/products?id=${id}`)
+            .then(res => {
+                console.log(res.data.data)
+                dispatch(colorsSuccess([res.data.data]))
+                dispatch(setTotalColors(1))
+                dispatch(setTotalPages(1))
+
+            })
+    }
+    catch (e){
+        dispatch(colorsError(e))
+    }
+}
