@@ -3,8 +3,11 @@
 Website with a table of colors of the year according to Pantone.
 
 **Currently developed:**
-- [X] Redux Store
+- [X] Redux Store with Redux Toolkit
 - [X] Dark/Light Mode Feature
+- [X] Color Table with AG Grid
+- [X] Pagination
+
 
 <a href="https://mordvintsevmv.github.io/color_table" target="_blank">Test App</a>
 
@@ -80,9 +83,7 @@ https://reqres.in/api/products
 
 ## <a name="todo">ToDo</a>
 
-- [ ] Develop Color Table
 - [ ] Develop Modal Component for item
-- [ ] Use Pagination
 - [ ] Develop ID search
 - [ ] Develop Error check
 - [ ] Develop Tests
