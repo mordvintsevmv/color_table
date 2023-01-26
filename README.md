@@ -7,6 +7,7 @@ Website with a table of colors of the year according to Pantone.
 - [X] Dark/Light Mode Feature
 - [X] Color Table with AG Grid
 - [X] Pagination
+- [X] Search by ID
 
 
 <a href="https://mordvintsevmv.github.io/color_table" target="_blank">Test App</a>
@@ -84,7 +85,6 @@ https://reqres.in/api/products
 ## <a name="todo">ToDo</a>
 
 - [ ] Develop Modal Component for item
-- [ ] Develop ID search
 - [ ] Develop Error check
 - [ ] Develop Tests
 
