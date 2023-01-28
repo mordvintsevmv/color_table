@@ -9,6 +9,7 @@ Website with a table of colors of the year according to Pantone.
 - [X] Pagination
 - [X] Search by ID
 - [X] Modal Component for Pantone Color
+- [X] Loading indication
 
 
 <a href="https://mordvintsevmv.github.io/color_table" target="_blank">Test App</a>
