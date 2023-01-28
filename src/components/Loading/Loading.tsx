@@ -1,9 +1,13 @@
 import {FC} from "react";
 import {CircularProgress} from "@mui/material";
 import './Loading.scss'
-const Loading: FC = () => {
+
+interface LoadingProps {
+    blur?: boolean
+}
+const Loading: FC<LoadingProps> = ({blur = false}) => {
     return(
-        <div className={"loading__wrapper"}>
+        <div className={blur ? "loading__wrapper-blur" : ''}>
             <div className={"loading__ring"}>
                 <CircularProgress/>
             </div>

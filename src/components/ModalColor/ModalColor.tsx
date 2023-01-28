@@ -34,7 +34,7 @@ const ModalColor: FC = () => {
     }
 
     if (loading){
-        return <Loading/>
+        return <Loading blur={true}/>
     } else if (error){
         return <></>
     } else if (color){

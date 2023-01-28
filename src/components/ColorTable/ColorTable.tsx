@@ -1,4 +1,4 @@
-import {FC, useEffect, useMemo, useState} from "react";
+import {FC, ReactNode, useEffect, useMemo, useState} from "react";
 import "./ColorTable.scss"
 import {useActions} from "../../hooks/useActions";
 
@@ -10,6 +10,7 @@ import {useTypedSelector} from "../../hooks/typedHooks";
 import {RowClickedEvent} from "ag-grid-community";
 import ModalColor from "../ModalColor/ModalColor";
 import {useSearchParams} from "react-router-dom";
+import Loading from "../Loading/Loading";
 
 const cellRendererColors = (params: any) => {
 
@@ -26,7 +27,7 @@ const cellRendererColors = (params: any) => {
 const ColorTable: FC = () => {
 
     const {fetchColors} = useActions()
-    const {colors} = useTypedSelector(state => state.colorReducer)
+    const {colors, loading, error} = useTypedSelector(state => state.colorReducer)
     const {page} = useTypedSelector(state => state.colorReducer)
 
     const [searchParams, setSearchParams] = useSearchParams()
@@ -49,30 +50,43 @@ const ColorTable: FC = () => {
     }
 
 
-    useEffect(()=>{
+    useEffect(() => {
         fetchColors(page)
-    },[page])
+    }, [page])
 
-    return(
-        <div className={"color-table"}>
+    let content: ReactNode
 
-            <ModalColor/>
+    if (loading) {
+        content = <Loading/>
+    } else if (error) {
+        content = <></>
+    } else if (colors) {
+        content =
+        <div className={'ag-grid-material color-table__ag-grid'}>
 
-            <div className={'ag-grid-material color-table__ag-grid'}>
+            <AgGridReact
+                rowData={colors}
+                columnDefs={columnDefs}
+                onRowClicked={rowClickHandler}
+                defaultColDef={defaultColDef}
+                rowHeight={30}
 
-                <AgGridReact
-                    rowData={colors}
-                    columnDefs={columnDefs}
-                    onRowClicked={rowClickHandler}
-                    defaultColDef={defaultColDef}
-                    rowHeight={30}
-
-                />
-
-            </div>
+            />
 
         </div>
-    )
-}
+
+    }
+
+        return (
+            <div className={"color-table"}>
+
+                <ModalColor/>
+
+                {content}
+
+            </div>
+        )
+    }
+
 
 export default ColorTable
