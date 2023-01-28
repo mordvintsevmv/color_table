@@ -4,6 +4,7 @@ import {Box, Modal} from "@mui/material";
 import {useSearchParams} from "react-router-dom";
 import {useActions} from "../../hooks/useActions";
 import {useTypedSelector} from "../../hooks/typedHooks";
+import Loading from "../Loading/Loading";
 
 const boxStyle = {
     bgcolor: 'background.paper',
@@ -30,13 +31,13 @@ const ModalColor: FC = () => {
         setIsModalOpen(false)
         searchParams.delete('colorID')
         setSearchParams(searchParams)
-
     }
 
-
-
-
-    if (color){
+    if (loading){
+        return <Loading/>
+    } else if (error){
+        return <></>
+    } else if (color){
         return (
             <Modal open={isModalOpen} onClose={handleClose}>
                 <Box sx={boxStyle} className={'pantone-box'}>
@@ -68,12 +69,9 @@ const ModalColor: FC = () => {
 
                 </Box>
             </Modal>
-
         )
-    } else{
-        return(
-        <div>LOADING</div>
-        )
+    }  else {
+        return <></>
     }
 }
 
