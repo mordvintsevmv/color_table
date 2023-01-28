@@ -1,12 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {IColor} from "../../types/IColor";
 
-interface IColor {
-    id: number,
-    name: string,
-    year: number,
-    color: string,
-    pantone_value: string
-}
+
 interface ColorState {
     colors: IColor[],
     loading: boolean,
