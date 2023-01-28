@@ -11,6 +11,7 @@ import {RowClickedEvent} from "ag-grid-community";
 import ModalColor from "../ModalColor/ModalColor";
 import {useSearchParams} from "react-router-dom";
 import Loading from "../Loading/Loading";
+import ArrowsTable from "./ArrowsTable/ArrowsTable";
 
 const cellRendererColors = (params: any) => {
 
@@ -83,6 +84,8 @@ const ColorTable: FC = () => {
                 <ModalColor/>
 
                 {content}
+
+                <ArrowsTable/>
 
             </div>
         )
