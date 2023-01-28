@@ -9,44 +9,40 @@ interface ModalColorProps {
     onClose: any,
 }
 
-const style = {
-    position: 'absolute' as 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 124,
+const boxStyle = {
     bgcolor: 'background.paper',
-    border: '2px solid #000',
     boxShadow: 24,
 };
 
 const ModalColor: FC<ModalColorProps> = ({color, open, onClose}) => {
     return (
     <Modal open={open} onClose={onClose}>
-        <Box sx={style}>
-            <div style={{height: '120px', width: '120px', backgroundColor:color.color}}>
+        <Box sx={boxStyle} className={'pantone-box'}>
+            <div className={'pantone-box__color'} style={{ backgroundColor:color.color}}>
 
             </div>
 
-            <span style={{position: 'absolute', top: 0, left: '5px', color: 'rgba(0,0,0,.3)'}}>
+            <span className={'pantone-box__id'}>
                          {color.id}
                      </span>
 
-            <h4 style={{padding: 0, margin: 0}}>
+            <span className={'pantone-box__year'}>
+                     {color.year}
+                     </span>
+
+
+            <h4 className={'pantone-box__text'}>
                 PANTONE®
             </h4>
 
-            <h5 style={{padding: 0, margin: 0}}>
+            <h5 className={'pantone-box__text'}>
                 {color.pantone_value}
             </h5>
 
-            <h5 style={{padding: 0, margin: 0}}>
+            <h5 className={'pantone-box__text'}>
                 {color.name}
             </h5>
 
-            <span style={{position: 'absolute', top: '98px', right: '5px', color: 'rgba(0,0,0,.3)'}}>
-                     {color.year}
-                     </span>
 
         </Box>
     </Modal>

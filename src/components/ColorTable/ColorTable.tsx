@@ -57,6 +57,7 @@ const ColorTable: FC = () => {
         fetchColors(page)
     },[page])
 
+    // @ts-ignore
     return(
         <div className={"color-table"}>
 

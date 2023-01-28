@@ -1,21 +1,36 @@
-.modal-color-wrapper{
+$border: 2px;
+$color-square: 150px;
+
+.pantone-box{
+
   position: absolute;
-  height: 100vh;
-  width: 100vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: $color-square + ($border * 2);
+  border: $border solid #000;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  &__color{
+    height: $color-square;
+    width: $color-square;
+  }
 
-  z-index: 20;
-}
+  &__id{
+    position: absolute;
+    top: 0;
+    left: 5px;
+    color: rgba(0,0,0,.3);
+  }
 
-.modal-color{
-  position: fixed;
-  height: 400px;
-  width: 400px;
+  &__year{
+    position: absolute;
+    top: $color-square - 22px;
+    right: 5px;
+    color: rgba(0,0,0,.3);
+  }
 
-  border: 1px solid red;
-  z-index: 20;
-
+  &__text{
+    padding: 0;
+    margin: 0 0 0 5px;
+  }
 }
