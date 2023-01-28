@@ -2,8 +2,9 @@ import {ChangeEvent, FC, useEffect, useState} from "react";
 import {useTypedSelector} from "../../hooks/typedHooks";
 import {useActions} from "../../hooks/useActions";
 import {InputAdornment, Stack, TextField} from "@mui/material";
-import {Palette} from "@mui/icons-material";
+import {Backspace, Palette} from "@mui/icons-material";
 import {useSearchParams} from "react-router-dom";
+import IconButton from '@mui/material/IconButton';
 
 const SearchField: FC = () => {
 
@@ -43,6 +44,14 @@ const SearchField: FC = () => {
         }
     }
 
+    const clearInputHandler = () => {
+        setIdValue('')
+        fetchColors(page)
+
+        searchParams.delete('searchID')
+        setSearchParams(searchParams)
+    }
+
     return (
         <Stack
             direction="row"
@@ -54,6 +63,12 @@ const SearchField: FC = () => {
             <TextField
                 InputProps={{
                     startAdornment: <InputAdornment position="start"><Palette/></InputAdornment>,
+                    endAdornment:
+                        <InputAdornment position="end">
+                            <IconButton onClick={clearInputHandler}>
+                                <Backspace/>
+                            </IconButton>
+                        </InputAdornment>
                 }}
                 value={idValue}
                 placeholder={'search by id'}
