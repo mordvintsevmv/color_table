@@ -20,7 +20,6 @@ const initialState: ColorState = {
     per_page: 5,
     total_colors: 0,
     total_pages: 1,
-
 }
 
 export const colorSlice = createSlice({

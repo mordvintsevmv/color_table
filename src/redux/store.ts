@@ -1,11 +1,13 @@
 import {configureStore} from "@reduxjs/toolkit";
 import themeReducer from "./slice/themeSlice"
 import colorReducer from "./slice/colorSlice"
+import modalColorReducer from './slice/modalColorSlice'
 
 export const store = configureStore({
     reducer:{
         themeReducer,
-        colorReducer
+        colorReducer,
+        modalColorReducer
     }
 })
 
