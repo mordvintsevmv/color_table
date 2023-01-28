@@ -8,6 +8,7 @@ import ColorTable from "./components/ColorTable/ColorTable";
 import {ArrowBackIosNew, ArrowForwardIos} from "@mui/icons-material";
 import {useActions} from "./hooks/useActions";
 import SearchField from "./components/SearchField/SearchField";
+import Loading from "./components/Loading/Loading";
 
 const App: FC = () => {
 
@@ -28,6 +29,7 @@ const App: FC = () => {
             <CssBaseline/>
 
             <div className="App">
+
 
                 <Header/>
 
@@ -61,9 +63,10 @@ const App: FC = () => {
                 </Stack>
 
             </div>
+
         </ThemeProvider>
 
-    );
+    )
 }
 
 export default App;

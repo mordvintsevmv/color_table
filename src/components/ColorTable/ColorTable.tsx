@@ -9,6 +9,7 @@ import 'ag-grid-community/styles/ag-theme-material.css'
 import {useTypedSelector} from "../../hooks/typedHooks";
 import {RowClickedEvent} from "ag-grid-community";
 import ModalColor from "../ModalColor/ModalColor";
+import {useSearchParams} from "react-router-dom";
 
 const cellRendererColors = (params: any) => {
 
@@ -28,6 +29,8 @@ const ColorTable: FC = () => {
     const {colors} = useTypedSelector(state => state.colorReducer)
     const {page} = useTypedSelector(state => state.colorReducer)
 
+    const [searchParams, setSearchParams] = useSearchParams()
+
 
     const [columnDefs, setColumnDefs] = useState([
         {field: 'id', width: 30},
@@ -35,33 +38,25 @@ const ColorTable: FC = () => {
         {field: 'year', width: 60},
     ])
 
-    const [modalColor, setModalColor] = useState({
-        active: false,
-        color: {}
-    })
-
     const defaultColDef = useMemo(() => ({
             cellStyle: cellRendererColors,
         }
     ), [])
 
     const rowClickHandler = (event: RowClickedEvent) => {
-        setModalColor({active: true, color: event.data})
+        searchParams.append('colorID', event.data.id)
+        setSearchParams(searchParams)
     }
 
-    const handleClose = () => {
-        setModalColor({active: false, color: {}})
-    }
 
     useEffect(()=>{
         fetchColors(page)
     },[page])
 
-    // @ts-ignore
     return(
         <div className={"color-table"}>
 
-            <ModalColor color={modalColor.color} open={modalColor.active} onClose={handleClose}/>
+            <ModalColor/>
 
             <div className={'ag-grid-material color-table__ag-grid'}>
 
