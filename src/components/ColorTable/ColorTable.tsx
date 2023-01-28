@@ -8,6 +8,7 @@ import 'ag-grid-community/styles/ag-theme-material.css'
 
 import {useTypedSelector} from "../../hooks/typedHooks";
 import {RowClickedEvent} from "ag-grid-community";
+import ModalColor from "../ModalColor/ModalColor";
 
 const cellRendererColors = (params: any) => {
 
@@ -16,8 +17,8 @@ const cellRendererColors = (params: any) => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        color: 'white'
-
+        color: 'white',
+        cursor: 'pointer'
     }
 }
 
@@ -34,6 +35,10 @@ const ColorTable: FC = () => {
         {field: 'year', width: 60},
     ])
 
+    const [modalColor, setModalColor] = useState({
+        active: false,
+        color: {}
+    })
 
     const defaultColDef = useMemo(() => ({
             cellStyle: cellRendererColors,
@@ -41,7 +46,11 @@ const ColorTable: FC = () => {
     ), [])
 
     const rowClickHandler = (event: RowClickedEvent) => {
-        console.log(event.data)
+        setModalColor({active: true, color: event.data})
+    }
+
+    const handleClose = () => {
+        setModalColor({active: false, color: {}})
     }
 
     useEffect(()=>{
@@ -50,6 +59,8 @@ const ColorTable: FC = () => {
 
     return(
         <div className={"color-table"}>
+
+            <ModalColor color={modalColor.color} open={modalColor.active} onClose={handleClose}/>
 
             <div className={'ag-grid-material color-table__ag-grid'}>
 

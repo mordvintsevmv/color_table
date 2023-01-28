@@ -1,0 +1,21 @@
+.modal-color-wrapper{
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  z-index: 20;
+}
+
+.modal-color{
+  position: fixed;
+  height: 400px;
+  width: 400px;
+
+  border: 1px solid red;
+  z-index: 20;
+
+}
