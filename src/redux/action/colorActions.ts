@@ -4,19 +4,17 @@ import axios from "axios";
 
 const {colorsError, colorsSuccess, colorsLoading, setPage, setTotalColors, setTotalPages} = colorSlice.actions
 
-export const fetchColors = (page: number, per_page:number = 5) => async (dispatch: Dispatch) => {
-    try{
-        dispatch(colorsLoading())
-        await axios.get(`https://reqres.in/api/products?per_page=${per_page}&page=${page}`)
-            .then(res => {
-                dispatch(colorsSuccess(res.data.data))
-                dispatch(setTotalColors(res.data.total))
-                dispatch(setTotalPages(res.data.total_pages))
-            })
-    }
-    catch (e){
-        dispatch(colorsError(e))
-    }
+export const fetchColors = (page: number, per_page: number = 5) => async (dispatch: Dispatch) => {
+    dispatch(colorsLoading())
+    await axios.get(`https://reqres.in/api/products?per_page=${per_page}&page=${page}`)
+        .then(res => {
+            dispatch(colorsSuccess(res.data.data))
+            dispatch(setTotalColors(res.data.total))
+            dispatch(setTotalPages(res.data.total_pages))
+        })
+        .catch(error => {
+            dispatch(colorsError(error.message))
+        })
 }
 
 export const setCurrentPage = (page: number) => (dispatch: Dispatch) => {
@@ -24,17 +22,15 @@ export const setCurrentPage = (page: number) => (dispatch: Dispatch) => {
 }
 
 export const findColorById = (id: number) => async (dispatch: Dispatch) => {
-    try{
-        await axios.get(`https://reqres.in/api/products?id=${id}`)
-            .then(res => {
-                console.log(res.data.data)
-                dispatch(colorsSuccess([res.data.data]))
-                dispatch(setTotalColors(1))
-                dispatch(setTotalPages(1))
+    await axios.get(`https://reqres.in/api/products?id=${id}`)
+        .then(res => {
+            console.log(res.data.data)
+            dispatch(colorsSuccess([res.data.data]))
+            dispatch(setTotalColors(1))
+            dispatch(setTotalPages(1))
 
-            })
-    }
-    catch (e){
-        dispatch(colorsError(e))
-    }
+        })
+        .catch(error => {
+            dispatch(colorsError(error.message))
+        })
 }
