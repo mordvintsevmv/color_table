@@ -1,10 +1,11 @@
-import {FC, useEffect, useState} from "react";
+import {FC, ReactNode, useEffect, useState} from "react";
 import './ModalColor.scss'
 import {Box, Modal} from "@mui/material";
 import {useSearchParams} from "react-router-dom";
 import {useActions} from "../../hooks/useActions";
 import {useTypedSelector} from "../../hooks/typedHooks";
 import Loading from "../Loading/Loading";
+import WarningBlock from "../WarningBlock/WarningBlock";
 
 const boxStyle = {
     bgcolor: 'background.paper',
@@ -19,13 +20,13 @@ const ModalColor: FC = () => {
     const {fetchModalColor} = useActions()
     const [isModalOpen, setIsModalOpen] = useState(false)
 
-    useEffect(()=>{
+    useEffect(() => {
         const colorID = searchParams.get('colorID')
-        if (colorID){
+        if (colorID) {
             fetchModalColor(Number(colorID))
             setIsModalOpen(true)
         }
-    },[searchParams])
+    }, [searchParams])
 
     const handleClose = () => {
         setIsModalOpen(false)
@@ -33,46 +34,50 @@ const ModalColor: FC = () => {
         setSearchParams(searchParams)
     }
 
-    if (loading){
-        return <Loading blur={true}/>
-    } else if (error){
-        return <></>
-    } else if (color){
-        return (
-            <Modal open={isModalOpen} onClose={handleClose}>
-                <Box sx={boxStyle} className={'pantone-box'}>
-                    <div className={'pantone-box__color'} style={{ backgroundColor:color.color}}>
+    let content: ReactNode
 
-                    </div>
+    if (loading) {
+        content = <Loading blur={true}/>
+    } else if (error) {
+        content = <div className={'modal-color-block'}><WarningBlock message={error} type={'error'}/></div>
+    } else if (color) {
+        content =
+            <Box sx={boxStyle} className={'pantone-box modal-color-block'}>
+                <div className={'pantone-box__color'} style={{backgroundColor: color.color}}/>
 
-                    <span className={'pantone-box__id'}>
+
+                <span className={'pantone-box__id'}>
                          {color.id}
                      </span>
 
-                    <span className={'pantone-box__year'}>
+                <span className={'pantone-box__year'}>
                      {color.year}
                      </span>
 
 
-                    <h4 className={'pantone-box__text'}>
-                        PANTONE®
-                    </h4>
+                <h4 className={'pantone-box__text'}>
+                    PANTONE®
+                </h4>
 
-                    <h5 className={'pantone-box__text'}>
-                        {color.pantone_value}
-                    </h5>
+                <h5 className={'pantone-box__text'}>
+                    {color.pantone_value}
+                </h5>
 
-                    <h5 className={'pantone-box__text'}>
-                        {color.name}
-                    </h5>
+                <h5 className={'pantone-box__text'}>
+                    {color.name}
+                </h5>
 
-
-                </Box>
-            </Modal>
-        )
-    }  else {
-        return <></>
+            </Box>
+    } else {
+        content = <></>
     }
+
+    return (
+        <Modal open={isModalOpen} onClose={handleClose}>
+            {content}
+        </Modal>
+    )
+
 }
 
 export default ModalColor

@@ -1,12 +1,17 @@
 $border: 2px;
 $color-square: 150px;
 
-.pantone-box{
-
+.modal-color-block {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  backdrop-filter: blur(15px);
+
+}
+.pantone-box{
+
   width: $color-square + ($border * 2);
   border: $border solid #000;
 

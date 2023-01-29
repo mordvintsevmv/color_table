@@ -12,6 +12,7 @@ import ModalColor from "../ModalColor/ModalColor";
 import {useSearchParams} from "react-router-dom";
 import Loading from "../Loading/Loading";
 import ArrowsTable from "./ArrowsTable/ArrowsTable";
+import WarningBlock from "../WarningBlock/WarningBlock";
 
 const cellRendererColors = (params: any) => {
 
@@ -60,7 +61,7 @@ const ColorTable: FC = () => {
     if (loading) {
         content = <Loading/>
     } else if (error) {
-        content = <></>
+        content = <div className={'color-table__warning'}><WarningBlock  message={error} type={'error'}/></div>
     } else if (colors) {
         content =
         <div className={'ag-grid-material color-table__ag-grid'}>
