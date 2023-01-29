@@ -28,7 +28,7 @@ const SearchField: FC = () => {
     },[idValue])
 
     const inputChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-        if ((/\d/).test(event.target.value)) {
+        if ((/^\d+$/).test(event.target.value)) {
 
             setIdValue(event.target.value)
 
