@@ -17,7 +17,6 @@ const App: FC = () => {
 
             <div className="App">
 
-
                 <Header/>
 
                 <SearchField/>
