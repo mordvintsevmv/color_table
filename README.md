@@ -11,6 +11,7 @@ Website with a table of colors of the year according to Pantone.
 - [X] Modal Component for Pantone Color
 - [X] Loading indication
 - [X] Search Params in URL
+- [X] Warnings about network errors
 
 
 <a href="https://mordvintsevmv.github.io/color_table" target="_blank">Test App</a>
@@ -87,7 +88,6 @@ https://reqres.in/api/products
 
 ## <a name="todo">ToDo</a>
 
-- [ ] Develop Error check
 - [ ] Develop Tests
 - [ ] Search Params checking
 - [ ] Refactoring
